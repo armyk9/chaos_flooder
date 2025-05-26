@@ -43,12 +43,13 @@ All attacks operate over HTTP(S) with realistic headers, randomized timing, and 
 ## 📦 Requirements
 
 - Python 3.8+
-- GTK 3 (`gi`, via PyGObject)
-- `requests`
-- (Optional) Tor daemon for anonymized routing
 
-### Install on Ubuntu/Debian:
+- GTK 3 runtime libraries
+
+- Python packages listed in requirements.txt
+
+### 📥 Linux (Ubuntu/Debian) setup:
 
 ```bash
 sudo apt install python3-gi gir1.2-gtk-3.0 tor
-pip install requests
+pip install -r requirements.txt
