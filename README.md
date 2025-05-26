@@ -23,7 +23,7 @@ It’s a learning tool, a lab toy, and a fun way to explore how embedded web ser
 
 ## 🖼️ Screenshot
 
-![Chaos Flooder UI](screenshot.png)
+![Chaos Flooder UI](chaos_flooder.jpg)
 
 ---
 
