@@ -58,4 +58,7 @@ All attacks operate over HTTP(S) with realistic headers, randomized timing, and 
 
 ```bash
 sudo apt install python3-gi gir1.2-gtk-3.0 tor
+```
+```bash 
 pip install -r requirements.txt
+```
