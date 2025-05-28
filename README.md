@@ -11,13 +11,13 @@ It’s a learning tool, a lab toy, and a fun way to explore how embedded web ser
 
 ## ✨ Features
 
-- 🖥️ **Graphical GTK+ 3 interface** – clean, lightweight, and scrollable
-- 🔁 **Multi-threaded engine** – powered by Python’s `ThreadPoolExecutor`
-- 🎯 **Custom target input** – enter any internal or test URL
-- 🧠 **10+ attack types** – all randomized per thread
-- 🧵 **Live request tracking** – logs success and error counts in real-time
-- 🕵️ **Tor support** – optional proxy via `localhost:9150` SOCKS5
-- 🎲 **Randomization** – rotates headers, IPs, user-agents, referrers
+- 🖥️ **Graphical GTK+ 3 interface** – clean, lightweight, and scrollable  
+- 🔁 **Multi-threaded engine** – powered by Python’s `ThreadPoolExecutor`  
+- 🎯 **Custom target input** – enter any internal or test URL  
+- 🧠 **10+ attack types** – all randomized per thread  
+- 🧵 **Live request tracking** – logs success and error counts in real-time  
+- 🕵️ **Tor support** – optional proxy via `localhost:9150` SOCKS5  
+- 🎲 **Randomization** – rotates headers, IPs, user-agents, referrers  
 
 ---
 
@@ -48,17 +48,35 @@ All attacks operate over HTTP(S) with realistic headers, randomized timing, and 
 
 ## 📦 Requirements
 
-- Python 3.8+
-
-- GTK 3 runtime libraries
-
-- Python packages listed in requirements.txt
+- Python 3.8+  
+- GTK 3 runtime libraries  
+- Python packages listed in requirements.txt  
 
 ### 📥 Linux (Ubuntu/Debian) setup:
 
 ```bash
 sudo apt install python3-gi gir1.2-gtk-3.0 tor
 ```
-```bash 
+
+```bash
 pip install -r requirements.txt
 ```
+
+---
+
+## 📦 AppImage (Linux)
+
+A prebuilt AppImage is available for convenience.
+
+### ✅ Run without installing:
+
+```bash
+chmod +x Chaos_Flooder-x86_64.AppImage
+./Chaos_Flooder-x86_64.AppImage
+```
+
+This allows you to run Chaos Flooder as a portable application with all dependencies bundled (except Tor, if used).
+
+> Make sure to install `tor` separately if you plan to enable SOCKS5 proxy support via localhost.
+
+---
