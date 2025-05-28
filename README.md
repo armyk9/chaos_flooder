@@ -1,5 +1,7 @@
 # 🌀 Chaos Flooder v3
 
+<img src="chaos-icon.png" alt="Chaos Flooder Icon" align="right" width="128" height="128" />
+
 **Chaos Flooder v3** is a GTK+ 3-based GUI HTTP flood tool I built to stress test the admin panels of my own home routers and wireless access points. A lot of consumer networking gear crumbles under basic request pressure, and I wanted an easy way to see where those limits are — without touching lower-layer traffic or writing custom curl scripts each time.
 
 It’s a learning tool, a lab toy, and a fun way to explore how embedded web servers handle (or fail under) a little chaos.
